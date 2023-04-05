@@ -63,3 +63,7 @@ class PledgeList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(supporter=self.request.user)
+
+class HelloWorld(APIView):
+    def get(self, request):
+        return Response({"hello": "world"})
