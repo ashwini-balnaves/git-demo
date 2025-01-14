@@ -17,7 +17,7 @@ class Project(models.Model):
         on_delete=models.CASCADE,
         related_name='owner_projects'
     )
-    uuid = models.UUIDField(unique=True, default=uuid4)
+    code = models.UUIDField(unique=True, default=uuid4)
 
 class Pledge(models.Model):
     amount = models.IntegerField()
