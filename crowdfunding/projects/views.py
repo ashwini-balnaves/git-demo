@@ -32,10 +32,11 @@ class ProjectDetail(APIView):
         IsOwnerOrReadOnly
     ]
 
-    def get_object(self, pk):
+    def get_object(self, code):
         try:
             # I wish my comments were better
-            project = Project.objects.get(pk=pk, is_open=True)
+            # Use the uuid over the primary key for security
+            project = Project.objects.get(code=code, is_open=True)
             self.check_object_permissions(self.request, project)
             return project
         except Project.DoesNotExist:
