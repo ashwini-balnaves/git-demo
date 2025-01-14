@@ -34,8 +34,9 @@ class ProjectDetail(APIView):
 
     def get_object(self, code):
         try:
+            # I wish my comments were better
             # Use the uuid over the primary key for security
-            project = Project.objects.get(code=code)
+            project = Project.objects.get(code=code, is_open=True)
             self.check_object_permissions(self.request, project)
             return project
         except Project.DoesNotExist:
