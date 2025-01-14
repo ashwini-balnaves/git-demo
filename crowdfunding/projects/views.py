@@ -34,7 +34,7 @@ class ProjectDetail(APIView):
 
     def get_object(self, pk):
         try:
-            project = Project.objects.get(pk=pk)
+            project = Project.objects.get(pk=pk, is_open=True)
             self.check_object_permissions(self.request, project)
             return project
         except Project.DoesNotExist:
