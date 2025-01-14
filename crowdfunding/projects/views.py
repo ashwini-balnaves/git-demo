@@ -32,9 +32,9 @@ class ProjectDetail(APIView):
         IsOwnerOrReadOnly
     ]
 
-    def get_object(self, pk):
+    def get_object(self, code):
         try:
-            project = Project.objects.get(pk=pk, is_open=True)
+            project = Project.objects.get(code=code, is_open=True)
             self.check_object_permissions(self.request, project)
             return project
         except Project.DoesNotExist:
