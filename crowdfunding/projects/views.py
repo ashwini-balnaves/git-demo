@@ -34,6 +34,7 @@ class ProjectDetail(APIView):
 
     def get_object(self, code):
         try:
+            # Use the uuid over the primary key for security
             project = Project.objects.get(code=code)
             self.check_object_permissions(self.request, project)
             return project
