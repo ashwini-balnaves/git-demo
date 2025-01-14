@@ -1,3 +1,5 @@
+from uuid import uuid4
+
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -15,6 +17,7 @@ class Project(models.Model):
         on_delete=models.CASCADE,
         related_name='owner_projects'
     )
+    code = models.UUIDField(unique=True, default=uuid4)
 
 class Pledge(models.Model):
     amount = models.IntegerField()
